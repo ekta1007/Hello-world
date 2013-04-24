@@ -1,0 +1,253 @@
+# final file to do the PCA analysis
+
+import time
+import re
+start_time = time.time()
+import csv
+# st line has headers, so skipping
+with open('C:/Users/Ekta.Grover/Desktop/data-souce-name/Train/Train/Train.csv', 'r') as f1:
+    next(f1)
+    reader = csv.reader(f1, delimiter=',')
+    input_set = []   
+    for row in reader:
+        input_set.append(row)
+
+import numpy as np
+#from numpy import genfromtxt
+from sklearn import cross_validation
+train, intermediate_set = cross_validation.train_test_split(input_set, train_size=0.6, test_size=0.4)
+cv, test = cross_validation.train_test_split(intermediate_set, train_size=0.5, test_size=0.5)
+        
+def LevenshteinDistance(s, t):
+    len_s=len(s)
+    len_t=len(t)
+    if len_s == 0:
+        return len_t
+    if len_t == 0:
+        return len_s
+    if s[len_s-1] == t[len_t-1] :
+        cost = 0
+    else : 
+        cost =1 
+    return min(LevenshteinDistance(s[0:len_s-1], t) + 1,LevenshteinDistance(s, t[0:len_t-1]) + 1,LevenshteinDistance(s[0:len_s-1], t[0:len_t-1]) + cost)
+
+
+""" manhattan finds the distance for attributes in row_matrix """
+""" row_matrix is a list """
+def manhattan(attribute1,attribute2,row_matrix):
+    distance = 0
+    total = 0
+    p = re.compile('[a-z]')
+    for i in row_matrix:
+        if not(p.search(attribute1[i])):
+            distance += abs(int(attribute1[i]) - int(attribute2[i]))
+        elif p.search(attribute1[i]) :
+            distance += LevenshteinDistance(attribute1[i],attribute2[i])
+    return distance
+
+
+    
+""" Module to find the age of machine"""
+""" This means that train[i] as in the split_dataset_create , or just the index index_store has the data pertaining to the auction of vintage machines """
+""" Note that I treat the vintage machines as ones with year = 1000 , the rest being in the 19's """
+age_machine =[]
+index_store=[]
+split_dataset_create=[]
+len(train)
+for i in range(0,len(train)):
+    age_temp=abs(int(train[i][9].split('/')[2].split(' ')[0])-int(train[i][6]))
+    age_machine.append(age_temp)
+            
+""" 
+for i in range(0,len(train)):
+    if int(train[i][6]) !=1000:
+        age_temp=abs(int(train[i][9].split('/')[2].split(' ')[0])-int(train[i][6]))
+        age_machine.append(age_temp)
+    elif  int(train[i][6]) ==1000 :
+  	age_temp=abs(int(train[i][9].split('/')[2].split(' ')[0])-int(train[i][6]))
+        age_machine.append(age_temp)
+		#storing vintage in the same list, ie age_machine, will figure out the dofferential treatmnent later
+        index_store.append(i)
+        split_dataset_create.append(train[i])
+    """
+  
+#rewriting age_machine, back to train[i][6]  
+for i in range(0,len(train)):
+    train[i][6]=age_machine[i]
+
+
+# converting the dataset to do PCA and regression therafter 
+# ignore row 1 (Explained variable] for PCA, but copy it in the final dataset, so that we can do direct analysis on that
+
+#row_dataset_str=[2,3,4,5]   
+#row_dataset_int=[1,7]
+#age machine uses saledate(6) & year manufactured(9)
+
+#manipulating variables for PCA treatment - will use this as string - Levensheindistance
+
+# drop 6 ,12,13 ,14
+#row_dataset_str=[2,3,4,5,10,11] 
+#row_dataset_int=[1,7,]  
+
+
+# creating dictinary of drop down lists
+
+def drop_down(train,m):
+    d={}
+    p=0
+    for i in range(0,len(train)):
+        if str(train[i][m]) not in d:
+            d.update({str(train[i][m]): p})
+            p+=1
+  
+    for i in range(0,len(train)):
+        if str(train[i][m]) in d :
+            train[i][m]= d[str(train[i][m])]
+            print train[i][m]
+
+
+
+# figuring out if there's a more efficient way to do this ?
+drop_down(train,4)            
+#UsageBand
+drop_down(train,8)
+#ProductSize
+drop_down(train,15)
+#16 fiProductClassDesc
+drop_down(train,16)     
+#17 state   convert to str  
+drop_down(train,17)
+#18 ProductGroup        
+drop_down(train,18)
+#19 ProductGroupDesc    
+drop_down(train,19)
+#20 Drive_System    
+drop_down(train,20)
+#21 Enclosure   
+drop_down(train,21)
+#22 Forks       
+drop_down(train,22)
+#23 Pad_Type        
+drop_down(train,23)
+#24 Ride_Control    
+drop_down(train,24) 
+#25 Stick       
+drop_down(train,25)
+#26 Transmission    
+drop_down(train,26) 
+
+
+#27 Turbocharged    
+drop_down(train,27) 
+#28 Blade_Extension
+drop_down(train,28)     
+#30 Enclosure_Type  
+drop_down(train,30) 
+#31 Engine_Horsepower       
+drop_down(train,31)
+    
+#33 Pushblock       
+drop_down(train,33)
+#34 Ripper      
+drop_down(train,34)
+#35 Scarifier       
+drop_down(train,35)
+#36 Tip_Control     
+drop_down(train,36)
+#38 Coupler     
+drop_down(train,38)
+#39 Coupler_System  
+drop_down(train,39) 
+#40 Grouser_Tracks  
+drop_down(train,40) 
+#41 Hydraulics_Flow
+drop_down(train,41)     
+#42 Track_Type      
+drop_down(train,42)
+
+
+    
+#45 Thumb       
+drop_down(train,45)
+#46 Pattern_Changer     
+drop_down(train,46)
+#47 Grouser_Type    
+drop_down(train,47) 
+#48 Backhoe_Mounting        
+drop_down(train,48)
+#49 Blade_Type      
+drop_down(train,49)
+#50 Travel_Controls     
+drop_down(train,50)
+#51 Differential_Type       
+drop_down(train,51)
+#52 Steering_Controls
+drop_down(train,52)
+
+
+# treat these seperately
+#29 Blade_Width 
+#43 Undercarriage_Pad_Width 
+#32 Hydraulics  
+#37 Tire_Size
+#44 Stick_Length    
+
+# The following attributes need differential treatment - because of data sanity issues
+#29
+for i in range(0,len(train)):
+    train[i][29]=train[i][29].replace("'",'').replace("<12","11")
+
+#32 Hydraulics  - use lex distance measure
+drop_down(train,32)
+    
+#37 Tire_Size - 
+for i in range(0,len(train)):
+    train[i][37]=train[i][37].replace('"','').replace('inch','').replace('None or Unspecified','0')
+    if train[i][37]== '':
+        train[i][37]='0'
+
+    
+#43
+for i in range(0,len(train)):
+    train[i][43]=train[i][43].replace('inch','').replace('None or Unspecified','0')
+    if train[i][43]=='': 
+        train[i][43]='0'
+    print train[i][43]
+    
+
+
+#44
+for i in range(0,len(train)):
+    if train[i][44]!= 'None or Unspecified' or train[i][44]!= '' :
+        train[i][44]=int(train[i][44].split('\'')[0])*12+int(train[i][44].split("\'")[1].split('"')[0])
+    elif train[i][44]== 'None or Unspecified':
+        train[i][44]=train[i][44].replace('None or Unspecified','0')
+    elif  train[i][44]=='' :
+        train[i][44]='0'
+    print train[i][44]
+    
+data=[]
+for i in range(0,len(train)):
+    for m in (4,6,8,15,16,17,18,19,20,21,26,27,29,31,33,34,35,36,38,39,40,41,42,45,46,47,48,49,50,51,52):
+        data.append(int(train[i][m]))
+
+        
+
+from matplotlib.mlab import PCA
+#construct your numpy array of data
+myData = np.array(data) 
+results = PCA(myData) 
+
+#this will return an array of variance percentages for each component
+results.fracs
+# picking uto 95% variace from the data
+
+#This will return a 2d array of the data projected into PCA space
+results.Y 
+
+                      
+                             
+                   
+    
+
+
