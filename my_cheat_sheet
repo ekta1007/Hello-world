@@ -1,0 +1,13 @@
+#pushing my files from Ubuntu box to git 
+
+cd /usr/share/doc/git
+git clone <REPOSITORY TO CLONE>
+
+cd <REPOSITORY TO CLONE>
+sudo git add .
+sudo git commit  -m “Message you want to see near your commit”
+sudo git push
+
+# checking out the code back to local machine repository 
+git checkout
+got pull 
