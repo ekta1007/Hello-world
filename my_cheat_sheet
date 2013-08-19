@@ -19,3 +19,9 @@ declaring coding
 #############
 removing whitespace from notepad++
 find ->  [.+(\s)+.+]  replace - > 
+
+##### finding the no. of words in a line, or finding the list of words in a line/text corpus
+#Clever Hack, instead of using my_text.split(), which splits by ""
+import re
+print len(re.findall(r'\w+', my_text))
+
