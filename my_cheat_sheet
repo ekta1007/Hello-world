@@ -15,3 +15,7 @@ got pull
 ###############
 declaring coding 
 # -*- coding: utf-8 -*-
+
+#############
+removing whitespace from notepad++
+find ->  [.+(\s)+.+]  replace - > 
