@@ -11,3 +11,7 @@ sudo git push
 # checking out the code back to local machine repository 
 git checkout
 got pull 
+
+###############
+declaring coding 
+# -*- coding: utf-8 -*-
