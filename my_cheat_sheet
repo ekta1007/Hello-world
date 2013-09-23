@@ -25,3 +25,13 @@ find ->  [.+(\s)+.+]  replace - >
 import re
 print len(re.findall(r'\w+', my_text))
 
+#selecting random rows and writing to a file 
+import random
+with open("C:\Users\Ekta.Grover\Desktop\input.csv", "rb") as source:
+    source.readline() # to skip the header
+    lines = [line for line in source]
+random_choice = random.sample(lines, 3)
+with open("C:\Users\Ekta.Grover\Desktop\output.csv", "wb") as sink:
+    sink.write("".join(random_choice))
+
+
