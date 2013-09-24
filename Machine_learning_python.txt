@@ -1,2 +1,0 @@
-#Logistic regression in Python 
-http://blog.yhathq.com/posts/logistic-regression-and-python.html
