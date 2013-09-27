@@ -33,5 +33,10 @@ with open("C:\Users\Ekta.Grover\Desktop\input.csv", "rb") as source:
 random_choice = random.sample(lines, 3)
 with open("C:\Users\Ekta.Grover\Desktop\output.csv", "wb") as sink:
     sink.write("".join(random_choice))
+    
+## Flattening a list
+ 
+from itertools import chain
+company_list_final=list(chain.from_iterable(company))
 
 
