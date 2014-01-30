@@ -11,3 +11,16 @@ map(chr, range(97, 123))
 
 map(chr, range(65, 91))
 # ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+#awesome way to get out of multiple loops 
+class GetOutOfLoop( Exception ):
+     pass
+
+try:
+    # logic here - assuming it hsa muliple break points..
+      raise GetOutOfLoop
+        # other stuff
+except GetOutOfLoop:
+    pass
+  
+  
