@@ -12,7 +12,7 @@ def isomorphs(string1, string2):
     for j in list_chars:
         dict_maps[j]='0' # this dict will contain mapping of chars from staring 1 to string 2
     """
-    for j in string1 : #and j not in dict_maps.keys():
+    for j in string1 : 
         dict_maps[j]='0' # have intitialized the dict keys
     j=0
     if len(string1)==len(string2) :
@@ -29,7 +29,7 @@ def isomorphs(string1, string2):
             j=j+1
     elif len(string1) is not len(string2):
            flag =1
-           message= "mapping not possible - strings are of unequal length - Dictionary map is not initialized" #"strings are isomorphs of each other"
+           message= "mapping not possible - strings are of unequal length - Dictionary map is not initialized" 
     if flag ==0:
         message = "strings are isomorphs of each other"
     return dict_maps, message
