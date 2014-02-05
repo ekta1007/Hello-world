@@ -2,3 +2,11 @@ Implementing a corpus of words sorted by frequency & disambiguating non-space se
 see also - http://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words
 
 http://www.geeksforgeeks.org/pattern-searching-set-8-suffix-tree-introduction/
+
+Awesome stuff to look into regarding custom designing optimization functions -:
+coding up your hessian function -:
+http://127.0.0.1:28056/library/stats/html/optim.html
+http://www.biostat.umn.edu/~ph7440/pubh7440/OptimLinearModel.R
+
+writing an actual optimization function
+http://zoonek.free.fr/blosxom/R/2012-06-01_Optimization.html
