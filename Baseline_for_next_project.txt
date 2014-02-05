@@ -11,3 +11,4 @@ http://www.biostat.umn.edu/~ph7440/pubh7440/OptimLinearModel.R
 writing an actual optimization function
 http://zoonek.free.fr/blosxom/R/2012-06-01_Optimization.html and using optimze ofcourse 
 http://127.0.0.1:28056/library/stats/html/optimize.html
+http://www.sr.bham.ac.uk/~ajrs/R/r-analyse_data.html
