@@ -12,3 +12,6 @@ writing an actual optimization function
 http://zoonek.free.fr/blosxom/R/2012-06-01_Optimization.html and using optimze ofcourse 
 http://127.0.0.1:28056/library/stats/html/optimize.html
 http://www.sr.bham.ac.uk/~ajrs/R/r-analyse_data.html
+
+Adrressing the lekage prlm 
+http://mathbabe.org/2012/11/20/columbia-data-science-course-week-12-predictive-modeling-data-leakage-model-evaluation/
