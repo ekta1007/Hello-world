@@ -1,5 +1,5 @@
 #pushing my files from Ubuntu box to git 
-
+# Changing things here
 cd /usr/share/doc/git
 git clone <REPOSITORY TO CLONE>
 
