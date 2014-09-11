@@ -1,0 +1,4 @@
+# calling the command line ars from within the script
+from subprocess import Popen, PIPE
+process = Popen(['ls', '-l', '/home/ekta'], stdout=PIPE, stderr=PIPE,shell=False)
+stdout, stderr = process.communicate()
